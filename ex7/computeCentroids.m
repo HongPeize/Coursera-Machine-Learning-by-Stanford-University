@@ -26,20 +26,8 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-x_coord = 0;
-y_coord = 0;
-
-for k = 1:K %we need K centroids
-    [r, ~] = find(idx == k);
-    %r
-    for i = 1:length(r)
-        x_coord = x_coord + X(r(i),1);
-        y_coord = y_coord + X(r(i),2);
-    end
-    centroids(k,1) = (1/length(r)) * x_coord;
-    centroids(k,2) = (1/length(r)) * y_coord;
-    x_coord = 0;
-    y_coord = 0;
+for k=1:K
+   centroids(k, :) = mean(X(idx==k, :));
 end
 
 % =============================================================
